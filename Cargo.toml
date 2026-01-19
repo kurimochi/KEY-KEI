@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 ciborium = "0.2.2"
+crdts = "7.3.2"
 hex = "0.4.3"
 serde = { version = "1.0.228", features = ["derive"] }
 sha3 = "0.10.8"
