@@ -1,0 +1,8 @@
+[package]
+name = "keyi-p2p"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libp2p = { version = "0.56.0", features = ["gossipsub", "noise", "quic", "tcp", "tokio", "yamux"] }
+tokio = "1.49.0"
