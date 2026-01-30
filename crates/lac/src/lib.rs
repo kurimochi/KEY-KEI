@@ -1,4 +1,4 @@
-use std::fmt;
+use thiserror::Error;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Derivatives {
@@ -32,26 +32,12 @@ pub fn validate_inheritance(child: LicenseAsCode, parent: LicenseAsCode) -> Resu
     Ok(())
 }
 
-#[derive(Debug)]
+#[derive(Debug, Error)]
 pub enum LacError {
+    #[error("Parent prohibits derivatives (ND)")]
     NoDerivativesViolation,
+    #[error("Parent requires exact same License for ShareAlike")]
     ShareAlikeViolation,
+    #[error("Commercial use not allowed by parent (NC)")]
     CommercialUseViolation,
 }
-
-impl fmt::Display for LacError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "{}",
-            match self {
-                LacError::NoDerivativesViolation => "Parent prohibits derivatives (ND)",
-                LacError::ShareAlikeViolation =>
-                    "Parent requires exact same License for ShareAlike",
-                LacError::CommercialUseViolation => "Commercial use not allowed by parent (NC)",
-            }
-        )
-    }
-}
-
-impl std::error::Error for LacError {}
