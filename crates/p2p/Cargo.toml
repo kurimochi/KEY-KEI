@@ -4,5 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-libp2p = { version = "0.56.0", features = ["gossipsub", "noise", "quic", "tcp", "tokio", "yamux"] }
-tokio = "1.49.0"
+ciborium = "0.2.2"
+keyi-core = { path = "../core" }
+keyi-identity = { path = "../identity" }
+keyi-lac = { path = "../lac" }
+libp2p = { version = "0.56.0", features = ["gossipsub", "identify", "macros", "noise", "quic", "tcp", "tokio", "yamux"] }
+serde = { version = "1.0.228", features = ["derive"] }
+thiserror = "2.0.18"
+tokio = { version = "1.49.0", features = ["full"] }

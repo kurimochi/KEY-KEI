@@ -32,6 +32,7 @@ pub struct Content {
     pub signer: String,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Packet {
     pub id: ContentId,
     pub content: Content,
@@ -39,11 +40,11 @@ pub struct Packet {
 }
 
 impl Content {
-    pub fn compute_id(&self) -> Result<ContentId, Box<dyn std::error::Error>> {
+    pub fn compute_id(&self) -> ContentId {
         let mut hasher = Keccak256::new();
         let mut cbor_buff: Vec<u8> = Vec::new();
-        ciborium::into_writer(self, &mut cbor_buff)?;
+        ciborium::into_writer(self, &mut cbor_buff).unwrap();
         hasher.update(cbor_buff);
-        Ok(ContentId(hasher.finalize().into()))
+        ContentId(hasher.finalize().into())
     }
 }
