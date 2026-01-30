@@ -1,0 +1,10 @@
+[package]
+name = "keyi-storage"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ciborium = "0.2.2"
+keyi-core = { path = "../core" }
+sled = "0.34.7"
+thiserror = "2.0.18"
