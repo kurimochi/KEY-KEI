@@ -12,6 +12,12 @@ impl From<[u8; 32]> for ContentId {
     }
 }
 
+impl From<ContentId> for [u8; 32] {
+    fn from(value: ContentId) -> Self {
+        value.0
+    }
+}
+
 impl fmt::Display for ContentId {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", hex::encode(self.0))

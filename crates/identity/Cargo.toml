@@ -1,0 +1,12 @@
+[package]
+name = "keyi-identity"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+blake2 = "0.10.6"
+hex = "0.4.3"
+keyi-core = { path = "../core" }
+sui-crypto = { version = "0.2.0", features = ["ed25519"] }
+sui-sdk-types = "0.2.2"
+thiserror = "2.0.18"
